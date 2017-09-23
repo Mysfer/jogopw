@@ -5,22 +5,12 @@
 switch ($uri) {
 
 
-    case '/cadastro':
+    case '/':
         
-        require './app/views/cadastro.php';
+        require './app/views/index.php';
         break;
     
-    case '/salvar':
-           
-        $testeController->salvar();
-        break;
-    
-    case '/consultar':
-            
-        $testeController->consultar();
-        break;
-
     default:
-        die('Essa rota não é valida');
+        die('ERRO 404');
         break;
 }
