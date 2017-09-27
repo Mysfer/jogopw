@@ -7,9 +7,13 @@ switch ($uri) {
 
     case '/':
         
-        require './app/views/index.php';
+        require './app/views/index.html';
         break;
-    
+
+    case '/game':
+        $testeController->game();
+        break;
+
     default:
         die('ERRO 404');
         break;

@@ -51,5 +51,11 @@ class TesteController
         require './app/views/consultar.php';
 
     }
-   
+
+    public function game()
+    {
+        $rand = 182;
+        $nome = isset($_POST['nome']) ? $_POST['nome'] :'';
+        require './app/views/game.php'; 
+    }
 }
