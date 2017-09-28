@@ -1,5 +1,4 @@
 <?php
-
 namespace Project\Controller;
 
 use Project\Db\QueryBuilder;
@@ -52,10 +51,55 @@ class TesteController
 
     }
 
+    public function start()
+    {
+        session_start();
+        $_SESSION['nome'] = isset($_POST['nome']) ? $_POST['nome'] :'';
+        $_SESSION['rand'] = rand(0,1000);
+        $_SESSION['tentativas'] = 0;
+        $msg='';
+        // header('Location: /game');
+        require './app/views/game.php';
+
+    }
+
     public function game()
     {
-        $rand = 182;
-        $nome = isset($_POST['nome']) ? $_POST['nome'] :'';
-        require './app/views/game.php'; 
+        //Inicia Sessão
+        session_Start();
+
+        //Recebe e cria as variaveis
+        $num = isset($_POST['num']) ? $_POST['num'] :'';
+        $msg='';
+
+        //Dica
+        if($num=='')
+        {
+            $msg='Você não digitou um valor';
+            require './app/views/game.php';
+
+        }
+
+        elseif($num>$_SESSION['rand'])
+        {
+            $msg = "Chute um numero menor";
+            $_SESSION['tentativas']++;
+            require './app/views/game.php';
+
+        }
+
+        elseif($num<$_SESSION['rand'])
+        {
+            $msg = "Chute um numero maior";
+            $_SESSION['tentativas']++;
+            require './app/views/game.php';
+
+        }
+
+        else
+        {
+            header('Location: /win');
+
+        }
     }
 }

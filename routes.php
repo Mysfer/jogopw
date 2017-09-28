@@ -14,6 +14,14 @@ switch ($uri) {
         $testeController->game();
         break;
 
+    case '/start':
+        $testeController->start();
+        break;
+
+    case '/win';
+        require './app/views/win.php';
+        break;
+
     default:
         die('ERRO 404');
         break;
