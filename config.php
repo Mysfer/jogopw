@@ -7,7 +7,7 @@ $testeController = new TesteController();
 //configuração do banco de dados
 $_ENV['config'] = [
     'host' => 'localhost',
-    'dbname' => 'bancoteste',
+    'dbname' => 'bancojogo',
     'user' => 'root',
     'password' => ''
 ];

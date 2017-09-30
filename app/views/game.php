@@ -1,21 +1,4 @@
 <?php
-    $msg = '';
-        $num = isset($_POST['num']) ? $_POST['num'] :'';
-        $contador = 0;
-        //Controle
-        if($num == ''){
-        }
-        elseif($num>$rand){
-            $msg = 'Chute um valor menor';
-            $contador++;
-        }
-        elseif($num<$rand){
-           $msg = 'Chute um valor maior';
-            $contador++; 
-        }
-        else{
-           require './app/views/salvar.php'; 
-        }
 ?>
 
 <!DOCTYPE html>
@@ -28,10 +11,10 @@
     <title>Jogo PW</title>
     <body>
 
-    <p>seu nome: <?=$name?></p>
-    <p>Seu placar: <?=$contador?></p>
+    <p>seu nome: <?=$_SESSION['nome']?></p> 
+    <p>Suas tentativas: <?=$_SESSION['tentativas']?>
     <center>
-    <div class="<con></con>tainer">
+    <div class="container">
     <br>
     <br>
     <br>
