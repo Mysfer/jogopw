@@ -66,8 +66,7 @@ class TesteController
         $dados = [];
         $dados['nome'] = $_SESSION['nome'];
         $dados['tentativas'] = $_SESSION['tentativas'];
-        $dados['numero'] = $_SESSION['rand'];
-        
+        $dados['numero'] = $_SESSION['rand'];      
 
         //inserir os dados
         $q->insert('jogo', $dados);
@@ -87,5 +86,5 @@ class TesteController
         //devolve a pagina com a pontuação
         require './app/views/pontuacao.php';
     }
-    
+
 }
