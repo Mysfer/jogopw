@@ -5,23 +5,6 @@ use Project\Db\QueryBuilder;
 
 class TesteController
 {
-
-    public function consultar()
-    {
-        //conexao com banco
-        $q = new QueryBuilder();
-
-        //busca os dados, guarda em uma var
-        $dados = $q->select('alunos');
-        
-        // print_r($dados);
-        // die();
-        
-        //chama a view
-        require './app/views/consultar.php';
-
-    }
-
     public function start()
     {
         session_start();
@@ -75,7 +58,7 @@ class TesteController
         }
     }
 
-    public function banco()
+    public function enviar()
     {
         //criar variaveis
         $dados = [];
@@ -88,6 +71,19 @@ class TesteController
         $q->insert('jogo',$dados);
 
         //chamar a pagina com as pontuações
-        require './app/views/pontuacao.php';
+        header ('Location: /pontuacao');
     }  
+
+    public function pontuacao()
+    {
+        //criação da variavel responsavel pelo banco de dados
+        $q = new QueryBuilder;
+
+        //pegando os dados do banco de dados
+        $dados = $q->select('jogo');
+
+        //devolve a pagina com a pontuação
+        require './app/views/pontuacao.php';
+    }
+    
 }

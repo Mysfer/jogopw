@@ -22,12 +22,12 @@ switch ($uri) {
         require './app/views/win.php';
         break;
 
-    case '/banco';
-        $testeController->banco();
+    case '/enviar';
+        $testeController->enviar();
         break;
 
     case '/pontuacao';
-        require '.app/views/pontuacao.php';
+        $testeController->pontuacao();
         break;
 
 
