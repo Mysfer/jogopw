@@ -1,7 +1,7 @@
 <?php 
 
-foreach ($dado as $d) {
-    echo $d['nome'];
-    echo $d['tentativas'];
-    echo $d['numero'];
+foreach ($dados as $d) {
+    echo $d['nome'] . "<br>";
+    echo $d['tentativas'] . "<br>";
+    echo $d['numero'] . "<br>";
 }

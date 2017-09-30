@@ -60,15 +60,17 @@ class TesteController
 
     public function enviar()
     {
+        session_start();
         //criar variaveis
+        $q = new QueryBuilder();
         $dados = [];
         $dados['nome'] = $_SESSION['nome'];
         $dados['tentativas'] = $_SESSION['tentativas'];
         $dados['numero'] = $_SESSION['rand'];
-        $q = New QueryBuilder;
+        
 
         //inserir os dados
-        $q->insert('jogo',$dados);
+        $q->insert('jogo', $dados);
 
         //chamar a pagina com as pontuações
         header ('Location: /pontuacao');
@@ -77,7 +79,7 @@ class TesteController
     public function pontuacao()
     {
         //criação da variavel responsavel pelo banco de dados
-        $q = new QueryBuilder;
+        $q = new QueryBuilder();
 
         //pegando os dados do banco de dados
         $dados = $q->select('jogo');
