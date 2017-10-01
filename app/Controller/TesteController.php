@@ -5,52 +5,6 @@ use Project\Db\QueryBuilder;
 
 class TesteController
 {
-
-    public function imprimir()
-    {
-       $dado = $_POST['dado'];
-       $resultado = $dado % 2 == 0 ? 'Par' : 'Impar';
-
-       require './app/views/imprime.php';
-    }
-
-    public function salvar()
-    {
-        //receber os dados
-        $dados['nome'] = $_POST['nome'];
-        $dados['idade'] = $_POST['idade'];
-
-        //conectar com o banco
-        $q = new QueryBuilder();
-
-        //enviar os dados para o banco
-        $q->insert('alunos', $dados);
-
-        //devolver uma pagina com mensagem de ok
-        // require './app/views/foi.php';
-
-        //redirecionar para a rota /cadastro
-        header('Location: /cadastro');
-        
-        
-    }
-
-    public function consultar()
-    {
-        //conexao com banco
-        $q = new QueryBuilder();
-
-        //busca os dados, guarda em uma var
-        $dados = $q->select('alunos');
-        
-        // print_r($dados);
-        // die();
-        
-        //chama a view
-        require './app/views/consultar.php';
-
-    }
-
     public function start()
     {
         session_start();
@@ -73,13 +27,15 @@ class TesteController
         $msg='';
 
         //Dica
+
+        //caso não insira um valor
         if($num=='')
         {
             $msg='Você não digitou um valor';
             require './app/views/game.php';
 
         }
-
+        //Caso Numero seja maior que o gerado
         elseif($num>$_SESSION['rand'])
         {
             $msg = "Chute um numero menor";
@@ -87,7 +43,7 @@ class TesteController
             require './app/views/game.php';
 
         }
-
+        //caso o numero seja menor que o gerado
         elseif($num<$_SESSION['rand'])
         {
             $msg = "Chute um numero maior";
@@ -95,11 +51,40 @@ class TesteController
             require './app/views/game.php';
 
         }
-
+        //caso o numero seja igual o gerado
         else
         {
             header('Location: /win');
-
         }
     }
+
+    public function enviar()
+    {
+        session_start();
+        //criar variaveis
+        $q = new QueryBuilder();
+        $dados = [];
+        $dados['nome'] = $_SESSION['nome'];
+        $dados['tentativas'] = $_SESSION['tentativas'];
+        $dados['numero'] = $_SESSION['rand'];      
+
+        //inserir os dados
+        $q->insert('jogo', $dados);
+
+        //chamar a pagina com as pontuações
+        header ('Location: /pontuacao');
+    }  
+
+    public function pontuacao()
+    {
+        //criação da variavel responsavel pelo banco de dados
+        $q = new QueryBuilder();
+
+        //pegando os dados do banco de dados
+        $dados = $q->select('jogo');
+
+        //devolve a pagina com a pontuação
+        require './app/views/pontuacao.php';
+    }
+
 }
