@@ -11,25 +11,47 @@
     <title>Jogo PW</title>
     <body>
 
-    <p>seu nome: <?=$_SESSION['nome']?></p> 
-    <p>Suas tentativas: <?=$_SESSION['tentativas']?>
-    <center>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div style="padding-top: 30px;">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Dados do jogo</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <p>Jogador:
+                                <?= $_SESSION['nome'] ?>
+                            </p>
+                            <p>Tentativas:
+                                <?= $_SESSION['tentativas'] ?>
+                            </p>
+                          
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     <div class="container">
     <br>
     <br>
     <br>
     <br>
     <br>
-    <h1>Desafio do Número!</h1>
+    <center><h1>Desafio do Número!</h1></center>
     <form method="post" action="/game">
                     <div class="form-group">
-                        <label for="nome">Digite um número</label>
+                       <center> <label for="nome">Digite um número</label></center>
                         <input class="form-control" type="text" name="num" id="num" value="">
                     </div>
-                        <button class="btn btn-lg btn-primary" type="">Chutar!</button>     
+                       <center> <button class="btn btn-lg btn-primary" type="">Chutar!</button><center>
     </form>
 
-                        <p><?=$msg?>     
+                        <center><p><?=$msg?></p></center>
 
     
     </body>

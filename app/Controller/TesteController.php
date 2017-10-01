@@ -83,6 +83,9 @@ class TesteController
         //pegando os dados do banco de dados
         $dados = $q->select('jogo');
 
+        //inverte o array
+        $dados = array_reverse($dados);
+
         //devolve a pagina com a pontuação
         require './app/views/pontuacao.php';
     }

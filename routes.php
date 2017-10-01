@@ -22,7 +22,6 @@ switch ($uri) {
         require './app/views/win.php';
         break;
 
-<<<<<<< HEAD
     case '/enviar';
         $testeController->enviar();
         break;
@@ -31,9 +30,6 @@ switch ($uri) {
         $testeController->pontuacao();
         break;
 
-
-=======
->>>>>>> 5e62e4033c85bff9d964290d28f4937864cf39c2
     default:
         die('ERRO 404');
         break;
